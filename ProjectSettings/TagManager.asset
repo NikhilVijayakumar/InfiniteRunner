@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - platformTSection
+  - platformZ
+  - platformZThin
+  - platformZSplit
+  - StairUp
+  - StairDown
   layers:
   - Default
   - TransparentFX

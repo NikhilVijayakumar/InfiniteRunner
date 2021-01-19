@@ -11,6 +11,11 @@ namespace Bavans.Runner.World.Platform
 
         private void FixedUpdate()
         {
+            if (PlayerController.isDead)
+            {
+                return;
+            }
+
             this.transform.position += PlayerController.player.transform.forward * speed;
 
             GameObject currentPlatform = PlayerController.currentPlatform;

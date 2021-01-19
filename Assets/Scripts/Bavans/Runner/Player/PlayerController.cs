@@ -9,15 +9,26 @@ namespace Bavans.Runner.Player
     public class PlayerController : MonoBehaviour
     {
         // Start is called before the first frame update
-        Animator animator;
+      
 
         public static GameObject player;
         public static GameObject currentPlatform;
+        public static bool isDead = false;
         bool canTurn = false;
         Vector3 startPostion;
+        Animator animator;
+        Rigidbody rb;
+
+        //magic
+        public GameObject magic;
+        public Transform magicStartPostion;
+        Rigidbody mRb;
+
 
         void Start()
         {
+            rb = GetComponent<Rigidbody>();
+            mRb = magic.GetComponent<Rigidbody>();
             animator = GetComponent<Animator>();
             player = this.gameObject;
             startPostion = player.transform.position;
@@ -32,13 +43,17 @@ namespace Bavans.Runner.Player
         // Update is called once per frame
         void Update()
         {
+            if(isDead)
+            {
+                return;
+            }
+
             IsJumping();
             IsMagic();
             MoveLeft();
             MoveRight();
             RotateLeft();
             RotateRight();
-
         }
 
         private void OnTriggerEnter(Collider other)
@@ -68,7 +83,27 @@ namespace Bavans.Runner.Player
 
         private void OnCollisionEnter(Collision collision)
         {
-            currentPlatform = collision.gameObject;
+            if(collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Wall")
+            {
+                animator.SetTrigger("isDead");
+                isDead = true;
+            }
+            else
+            {
+                currentPlatform = collision.gameObject;
+            }           
+        }
+
+        void CastMagic()
+        {
+            magic.transform.position = magicStartPostion.position;
+            magic.SetActive(true);
+            mRb.AddForce(this.transform.forward * 4000);
+            Invoke("KillMagic", 1);
+        }
+        void KillMagic()
+        {
+            magic.SetActive(false);
         }
 
 
@@ -137,6 +172,7 @@ namespace Bavans.Runner.Player
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 animator.SetBool("isJumping", true);
+                rb.AddForce(Vector3.up * 250);
             }
            
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bavans.Runner.Player;
 namespace Bavans.Runner.World.Platform
 {
   
@@ -10,6 +11,11 @@ namespace Bavans.Runner.World.Platform
         bool dSchedule = false;
         private void OnCollisionExit(Collision player)
         {
+            if (PlayerController.isDead)
+            {
+                return;
+            }
+
             if(player.gameObject.tag == "Player" && !dSchedule)
             {
                 Invoke("SetInactive", deactivateTime);

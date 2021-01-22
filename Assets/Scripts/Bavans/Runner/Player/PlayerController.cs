@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Bavans.Runner.World;
+using TMPro;
+
 
 namespace Bavans.Runner.Player
 {
@@ -15,14 +14,18 @@ namespace Bavans.Runner.Player
         public static GameObject currentPlatform;
         public static bool isDead = false;
         bool canTurn = false;
+        bool isJumping = false;
         Vector3 startPostion;
         Animator animator;
         Rigidbody rb;
+        public TextMeshProUGUI scoreText;
+        public TextMeshProUGUI highScoreText;
 
         //magic
         public GameObject magic;
         public Transform magicStartPostion;
         Rigidbody mRb;
+        int score = 0;
 
 
         void Start()
@@ -37,8 +40,18 @@ namespace Bavans.Runner.Player
             {
                 GenerateWorld.RunDummy();
             }
+            if (PlayerPrefs.HasKey("highScore"))
+            {
+                int hs = PlayerPrefs.GetInt("highScore");
+                highScoreText.text = "Highest score : " + hs;
+            }
+            else
+            {
+                highScoreText.text = "Highest score : 0";
+            }
+            updateScore(score);
 
-        }
+         }
 
         // Update is called once per frame
         void Update()
@@ -83,10 +96,30 @@ namespace Bavans.Runner.Player
 
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Wall")
+            if (isDead)
+            {
+                return;
+            }
+
+            if(collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DeathCube")
             {
                 animator.SetTrigger("isDead");
                 isDead = true;
+
+                PlayerPrefs.SetInt("lastScore", score);
+                if (PlayerPrefs.HasKey("highScore"))
+                {
+                    int hs = PlayerPrefs.GetInt("highScore");
+                    if(hs < score)
+                    {
+                        PlayerPrefs.SetInt("highScore", score);
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("highScore", score);
+                }
+
             }
             else
             {
@@ -160,7 +193,7 @@ namespace Bavans.Runner.Player
 
         private void IsMagic()
         {
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.M) && !isDead)
             {
                 animator.SetBool("isMagic", true);
             }
@@ -169,10 +202,13 @@ namespace Bavans.Runner.Player
 
         private void IsJumping()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !isDead && !isJumping)
             {
+                
                 animator.SetBool("isJumping", true);
+                isJumping = true;
                 rb.AddForce(Vector3.up * 250);
+                Invoke("JumpCompleted", 2);
             }
            
         }
@@ -180,11 +216,18 @@ namespace Bavans.Runner.Player
         private void JumpCompleted()
         {
             animator.SetBool("isJumping", false);
+            isJumping = false;
         }
 
         private void MagicCompleted()
         {
             animator.SetBool("isMagic", false);
+        } 
+        
+        public void updateScore(int coin)
+        {
+            score += coin;
+            scoreText.text = "Score: "+score;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bavans.Runner.World.Platform;
 using Bavans.Runner.Player;
-
+using UnityEngine.SceneManagement;
 
 namespace Bavans.Runner.World
 {
@@ -19,7 +19,12 @@ namespace Bavans.Runner.World
             dummyTraveller = new GameObject("dummy");           
         }
 
-       public static void RunDummy()
+        public void QuitGame()
+        {
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        }
+
+        public static void RunDummy()
         {
             GameObject platform = Pool.singleton.GetRandomPlatform();
             if(platform == null)

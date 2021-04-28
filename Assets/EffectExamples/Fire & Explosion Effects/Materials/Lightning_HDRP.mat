@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Lightning_HDRP
-  m_Shader: {fileID: -6465566751694194690, guid: fa84f8febe8e26344802556de47f795f,
+  m_Shader: {fileID: -6465566751694194690, guid: 16d878da9ceb24143819d613f68690dc,
     type: 3}
-  m_ShaderKeywords: _BLENDMODE_ADD _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
+  m_ShaderKeywords: _BLENDMODE_ALPHA _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -27,6 +27,10 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_23DD87FD:
+        m_Texture: {fileID: 2800000, guid: 06e4a78c75e10c145a9156e32089ec9c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8FEEBB68:
         m_Texture: {fileID: 2800000, guid: 92781d74b982d084ca9223b02d2cae11, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -55,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionTexture:
-        m_Texture: {fileID: 2800000, guid: 92781d74b982d084ca9223b02d2cae11, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8de8e22f7a7bd4442994c4abcb489b97, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -78,9 +82,9 @@ Material:
     - Vector1_4664B72E: 1
     - Vector1_CB02A382: 0.5
     - _AlphaCutoffEnable: 0
-    - _AlphaDstBlend: 1
+    - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
-    - _BlendMode: 1
+    - _BlendMode: 0
     - _BlendOp: 0
     - _BumpScale: 1
     - _CameraFadingEnabled: 0
@@ -98,7 +102,7 @@ Material:
     - _DistortionStrengthScaled: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _EmissionEnabled: 1
     - _EnableFogOnTransparent: 1
     - _FlipbookMode: 0
@@ -146,11 +150,12 @@ Material:
     - Vector2_4F8D01F9: {r: 0, g: 1, b: 0, a: 0}
     - Vector2_D0C9AA28: {r: 1, g: 2, b: 0, a: 0}
     - Vector2_F9AF32A8: {r: 0, g: 2, b: 0, a: 0}
-    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
+    - _AlbedoColor: {r: 0.9811321, g: 0.0709623, b: 0.10900221, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EmissionCol: {r: 0.9339623, g: 0.21395597, b: 0.085172564, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColorTest: {r: 0, g: 40.818085, b: 67.79352, a: 1}
     - _FadeRange: {r: 0, g: 1, b: 0, a: 0}

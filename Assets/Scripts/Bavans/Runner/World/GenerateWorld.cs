@@ -12,7 +12,8 @@ namespace Bavans.Runner.World
 
       
         public static GameObject dummyTraveller;
-        public static GameObject lastPlatform;
+        public static GameObject lastPlatform;       
+        
 
         void Awake()
         {
@@ -27,7 +28,8 @@ namespace Bavans.Runner.World
         public static void RunDummy()
         {
             GameObject platform = Pool.singleton.GetRandomPlatform();
-            if(platform == null)
+            GameObject deathcube = Pool.singleton.deathcube;
+            if (platform == null)
             {
                 return;
             }
@@ -46,39 +48,26 @@ namespace Bavans.Runner.World
                 if (lastPlatform.tag == "StairUp")
                 {
                     dummyTraveller.transform.Translate(0, 5, 0);
+                    //deathcube.transform.Translate(0, 5, 0);
                 }
 
-                /* else if (platform.tag == "platformTSection")
-                 {
-                     if (Random.Range(0, 2) == 0)
-                     {
-                         dummyTraveller.transform.Rotate(new Vector3(0, 90, 0));
-                     }
-                     else
-                     {
-                         dummyTraveller.transform.Rotate(new Vector3(0, -90, 0));
-                     }
-
-                     dummyTraveller.transform.Translate(Vector3.forward * -10);
-                 }*/
+               
             }
-
-          
-
 
             lastPlatform = platform;
             platform.SetActive(true);
             platform.transform.position = dummyTraveller.transform.position;
             platform.transform.rotation = dummyTraveller.transform.rotation;
 
-          
-
             if (platform.tag == "StairDown")
             {
                 dummyTraveller.transform.Translate(0, -5, 0);
                 platform.transform.Rotate(new Vector3(0, 180, 0));
                 platform.transform.position = dummyTraveller.transform.position;
+               // deathcube.transform.Translate(0, -5, 0);
             }
+
+           
 
         }
     }

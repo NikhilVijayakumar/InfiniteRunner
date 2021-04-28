@@ -10,6 +10,7 @@ namespace Bavans.Runner.World.Obstacle
         List<Vector3> bricksPostionList = new List<Vector3>();
         List<Quaternion> bricksRotationList = new List<Quaternion>();
         Collider col;
+        public GameObject earth;
         void Awake()
         {
             col = GetComponent<Collider>();
@@ -26,12 +27,20 @@ namespace Bavans.Runner.World.Obstacle
         {
             if(collision.gameObject.tag == "Spell")
             {
+                earth.SetActive(true);
                 col.enabled = false;
+                
                 foreach (Rigidbody rb in bricksRBList)
                 {
                     rb.isKinematic = false;
                 }
+                Invoke("KillMagic", 1);
             }
+        }
+
+        void KillMagic()
+        {
+            earth.SetActive(false);
         }
 
         private void OnEnable()

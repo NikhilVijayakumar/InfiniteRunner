@@ -22,16 +22,20 @@ namespace Bavans.Runner.Player
         public TextMeshProUGUI highScoreText;
 
         //magic
-        public GameObject magic;
+        public GameObject[] magicData;
+        GameObject magic;
         public Transform magicStartPostion;
         Rigidbody mRb;
         int score = 0;
 
+       
+
 
         void Start()
         {
+           
             rb = GetComponent<Rigidbody>();
-            mRb = magic.GetComponent<Rigidbody>();
+           
             animator = GetComponent<Animator>();
             player = this.gameObject;
             startPostion = player.transform.position;
@@ -103,6 +107,8 @@ namespace Bavans.Runner.Player
 
             if(collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DeathCube")
             {
+
+            
                 animator.SetTrigger("isDead");
                 isDead = true;
 
@@ -129,7 +135,8 @@ namespace Bavans.Runner.Player
 
         void CastMagic()
         {
-            magic.transform.position = magicStartPostion.position;
+            GetMagic();
+            magic.transform.position = magicStartPostion.position;            
             magic.SetActive(true);
             mRb.AddForce(this.transform.forward * 4000);
             Invoke("KillMagic", 1);
@@ -137,6 +144,14 @@ namespace Bavans.Runner.Player
         void KillMagic()
         {
             magic.SetActive(false);
+        }
+
+        void GetMagic()
+        {
+            int index = Random.Range(0, magicData.Length);
+            print("index:"+index);
+            magic = magicData[index];
+            mRb = magic.GetComponent<Rigidbody>();
         }
 
 

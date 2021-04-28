@@ -9,6 +9,7 @@ namespace Bavans.Runner.World.Platform
         public static Pool singleton;
         public List<PoolItem> itemList;
         public List<GameObject> pooledItemList;
+        public  GameObject deathcube;
         // Start is called before the first frame update
 
         private void Awake()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Bavans.Runner.Player;
 
 namespace Bavans.Runner.Menu
 {
@@ -13,12 +14,13 @@ namespace Bavans.Runner.Menu
         GameObject[] buttonArray;
         public void LoadGameScene()
         {
+            PlayerController.isDead = false;
             SceneManager.LoadScene("Platform", LoadSceneMode.Single);
         }
 
         public void QuitGame()
-        {
-            Application.Quit();
+        {    
+            Application.Quit();    
         }
 
         private void Start()

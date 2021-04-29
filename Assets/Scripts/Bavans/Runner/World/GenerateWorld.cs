@@ -25,6 +25,11 @@ namespace Bavans.Runner.World
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
 
+        public void GoToTutorial()
+        {
+            SceneManager.LoadScene("LearnToPLay", LoadSceneMode.Single);
+        }
+
         public static void RunDummy()
         {
             GameObject platform = Pool.singleton.GetRandomPlatform();

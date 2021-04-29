@@ -12,7 +12,11 @@ namespace Bavans.Runner.World
             {
                 GameObject player = other.gameObject;
                 PlayerController controller =  player.GetComponent<PlayerController>();
-                controller.updateScore(1);
+                if (controller != null)
+                {
+                    controller.updateScore(1);
+                }
+                
                 gameObject.SetActive(false);
             }
         }

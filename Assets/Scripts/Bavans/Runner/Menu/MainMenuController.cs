@@ -60,6 +60,11 @@ namespace Bavans.Runner.Menu
             }
         }
 
+        public void LoadTutorialScene()
+        {
+            SceneManager.LoadScene("LearnToPLay", LoadSceneMode.Single);
+        }
+
 
     }
 }

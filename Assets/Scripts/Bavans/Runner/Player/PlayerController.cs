@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Bavans.Runner.World;
 using TMPro;
-
+using EZCameraShake;
 
 namespace Bavans.Runner.Player
 {
@@ -27,15 +27,25 @@ namespace Bavans.Runner.Player
         public Transform magicStartPostion;
         Rigidbody mRb;
         int score = 0;
+        public GameObject pannel;
+        public bool istutorial = false;
 
-       
+
 
 
         void Start()
         {
-           
+            if(pannel == null)
+            {
+                initGame();
+            }
+                  
+         }
+
+        private void initGame()
+        {
             rb = GetComponent<Rigidbody>();
-           
+
             animator = GetComponent<Animator>();
             player = this.gameObject;
             startPostion = player.transform.position;
@@ -44,18 +54,25 @@ namespace Bavans.Runner.Player
             {
                 GenerateWorld.RunDummy();
             }
-            if (PlayerPrefs.HasKey("highScore"))
+            if (PlayerPrefs.HasKey("highScore") && !istutorial )
             {
                 int hs = PlayerPrefs.GetInt("highScore");
-                highScoreText.text = "Highest score : " + hs;
+                if (highScoreText != null)
+                {
+                    highScoreText.text = "Highest score : " + hs;
+                }
+
             }
             else
             {
-                highScoreText.text = "Highest score : 0";
+                if (highScoreText != null)
+                {
+                    highScoreText.text = "Highest score : 0";
+                }
+
             }
             updateScore(score);
-
-         }
+        }
 
         // Update is called once per frame
         void Update()
@@ -64,7 +81,7 @@ namespace Bavans.Runner.Player
             {
                 return;
             }
-
+           
             IsJumping();
             IsMagic();
             MoveLeft();
@@ -113,19 +130,21 @@ namespace Bavans.Runner.Player
                 isDead = true;
 
                 PlayerPrefs.SetInt("lastScore", score);
-                if (PlayerPrefs.HasKey("highScore"))
+                if (!istutorial)
                 {
-                    int hs = PlayerPrefs.GetInt("highScore");
-                    if(hs < score)
+                    if (PlayerPrefs.HasKey("highScore"))
+                    {
+                        int hs = PlayerPrefs.GetInt("highScore");
+                        if (hs < score)
+                        {
+                            PlayerPrefs.SetInt("highScore", score);
+                        }
+                    }
+                    else
                     {
                         PlayerPrefs.SetInt("highScore", score);
                     }
                 }
-                else
-                {
-                    PlayerPrefs.SetInt("highScore", score);
-                }
-
             }
             else
             {
@@ -242,7 +261,17 @@ namespace Bavans.Runner.Player
         public void updateScore(int coin)
         {
             score += coin;
-            scoreText.text = "Score: "+score;
+            if(scoreText != null)
+            {
+                scoreText.text = "Score: " + score;
+            }
+            
+        }
+
+        public void ClosePannel()
+        {
+            pannel.SetActive(false);
+            initGame();
         }
     }
 }

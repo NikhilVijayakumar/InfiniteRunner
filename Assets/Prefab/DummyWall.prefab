@@ -206,7 +206,7 @@ MonoBehaviour:
   - {fileID: 1346674959378247223}
   - {fileID: 8409785541928204340}
   - {fileID: 1980660042526739415}
-  earth: {fileID: 3581696435741206846}
+  blast: {fileID: 3581696435741206846}
 --- !u!1 &1346674959378247223
 GameObject:
   m_ObjectHideFlags: 0

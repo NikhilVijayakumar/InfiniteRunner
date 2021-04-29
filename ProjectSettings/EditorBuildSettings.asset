@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Platform.unity
     guid: efbcc87ba559fc74fbbf81b632786e09
+  - enabled: 1
+    path: Assets/Scenes/LearnToPLay.unity
+    guid: 4e6857cacacec544985bbe0378f4b56d
+  - enabled: 1
+    path: Assets/Scenes/Jump.unity
+    guid: f8bc793a77a974d4d91386f76b10dc10
+  - enabled: 1
+    path: Assets/Scenes/Magic.unity
+    guid: 207a4eb238aca3341bb07a2f0635b341
+  - enabled: 1
+    path: Assets/Scenes/Movement.unity
+    guid: cccb784b3cfc85b4c946680af8fafd23
+  - enabled: 1
+    path: Assets/Scenes/Rotation.unity
+    guid: b7355c2e16808c64abf9d75fe8880247
   m_configObjects: {}

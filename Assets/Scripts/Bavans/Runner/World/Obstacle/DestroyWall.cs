@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EZCameraShake;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Bavans.Runner.World.Obstacle
@@ -10,7 +11,7 @@ namespace Bavans.Runner.World.Obstacle
         List<Vector3> bricksPostionList = new List<Vector3>();
         List<Quaternion> bricksRotationList = new List<Quaternion>();
         Collider col;
-        public GameObject earth;
+        public GameObject blast;
         void Awake()
         {
             col = GetComponent<Collider>();
@@ -27,20 +28,22 @@ namespace Bavans.Runner.World.Obstacle
         {
             if(collision.gameObject.tag == "Spell")
             {
-                earth.SetActive(true);
+               
+                blast.SetActive(true);
                 col.enabled = false;
                 
                 foreach (Rigidbody rb in bricksRBList)
                 {
                     rb.isKinematic = false;
                 }
+                CameraShaker.Instance.ShakeOnce(5f, 8f, 1f, 1f);
                 Invoke("KillMagic", 1);
             }
         }
 
         void KillMagic()
         {
-            earth.SetActive(false);
+            blast.SetActive(false);
         }
 
         private void OnEnable()

@@ -8,12 +8,19 @@ namespace Bavans.Runner.World.Platform
     {
         public static Pool singleton;
         public List<PoolItem> itemList;
-        public List<GameObject> pooledItemList;
+        private List<GameObject> pooledItemList;
+        public List<Material> materialDark;
+        public List<Material> materialLight;
+        private bool theme;
         public  GameObject deathcube;
+        private Material material;
+       
         // Start is called before the first frame update
 
         private void Awake()
         {
+            int index = Random.Range(0, 100);
+            theme = index % 5 == 0;           
             singleton = this;
             pooledItemList = new List<GameObject>();
             foreach(PoolItem item in itemList)
@@ -34,6 +41,7 @@ namespace Bavans.Runner.World.Platform
             {
                 if (!pooledItemList[i].activeInHierarchy)
                 {
+                    pooledItemList[i].GetComponentInChildren<Renderer>().material = material;
                     return pooledItemList[i];
                 }
             }
@@ -43,12 +51,45 @@ namespace Bavans.Runner.World.Platform
                 {
                     GameObject obj = Instantiate(item.prefab);
                     obj.SetActive(false);
+                    obj.GetComponentInChildren<Renderer>().material = material;
                     pooledItemList.Add(obj);
                     return obj;
                 }
             }
             return null;
         }
+
+       
+
+        public bool GetTheme()
+        {
+            return theme;
+        }
+
+        public Material GetMaterial()
+        {
+            if (theme)
+            {
+                int index = Random.Range(0, materialDark.Count);
+                return materialDark[index];
+            }
+            else
+            {
+                int index = Random.Range(0, materialLight.Count);
+                return materialLight[index];
+            }
+        }
+
+        public void UpdateMaterial(Material data)
+        {
+            material = data; 
+        }
+
+        public void UpdateMaterial()
+        {
+            material = GetMaterial();
+        }
+
 
         void Start()
         {

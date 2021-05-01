@@ -4,21 +4,31 @@ using UnityEngine;
 using Bavans.Runner.World.Platform;
 using Bavans.Runner.Player;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace Bavans.Runner.World
-{
+{     
     public class GenerateWorld : MonoBehaviour
     {
 
-      
+       
         public static GameObject dummyTraveller;
-        public static GameObject lastPlatform;       
-        
+        public static GameObject lastPlatform;
+        public GameObject initialPlatform;
+       
+
 
         void Awake()
         {
-            dummyTraveller = new GameObject("dummy");           
+            Material material = Pool.singleton.GetMaterial();
+            initialPlatform.GetComponentInChildren<Renderer>().material = material;
+            Pool.singleton.UpdateMaterial(material);
+            dummyTraveller = new GameObject("dummy");
+            
         }
+
+        
+
 
         public void QuitGame()
         {
@@ -42,10 +52,12 @@ namespace Bavans.Runner.World
             {
                 if (lastPlatform.tag == "platformTSection")
                 {
+                    Pool.singleton.UpdateMaterial();
                     dummyTraveller.transform.position = lastPlatform.transform.position + PlayerController.player.transform.forward * 20;
                 }
                 else
                 {
+                    
                     dummyTraveller.transform.position = lastPlatform.transform.position + PlayerController.player.transform.forward * 10;
                 }
                    
@@ -75,5 +87,8 @@ namespace Bavans.Runner.World
            
 
         }
+
+
+       
     }
 }

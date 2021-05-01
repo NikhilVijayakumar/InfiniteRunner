@@ -71,6 +71,7 @@ namespace Bavans.Runner.Player
                 }
 
             }
+            TimeManager.singleton.ClearSky();
             updateScore(score);
         }
 
@@ -92,6 +93,11 @@ namespace Bavans.Runner.Player
 
         private void OnTriggerEnter(Collider other)
         {
+            if(GenerateWorld.lastPlatform == null)
+            {
+                return;
+            }
+
             if(other is BoxCollider && GenerateWorld.lastPlatform.tag != "platformTSection")
             {
                 GenerateWorld.RunDummy();
@@ -168,7 +174,7 @@ namespace Bavans.Runner.Player
         void GetMagic()
         {
             int index = Random.Range(0, magicData.Length);
-            print("index:"+index);
+            print("timeIndex:"+index);
             magic = magicData[index];
             mRb = magic.GetComponent<Rigidbody>();
         }
@@ -265,7 +271,7 @@ namespace Bavans.Runner.Player
             {
                 scoreText.text = "Score: " + score;
             }
-            
+            TimeManager.singleton.updateScore(coin);
         }
 
         public void ClosePannel()

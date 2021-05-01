@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LearnToPLay.unity
     guid: 4e6857cacacec544985bbe0378f4b56d
   - enabled: 1
-    path: Assets/Scenes/Jump.unity
+    path: Assets/Scenes/Jump1.unity
     guid: f8bc793a77a974d4d91386f76b10dc10
   - enabled: 1
     path: Assets/Scenes/Magic.unity

@@ -16,13 +16,14 @@ namespace Bavans.Runner.World.Platform
                 return;
             }
 
-            this.transform.position += PlayerController.player.transform.forward * speed;
-
             GameObject currentPlatform = PlayerController.currentPlatform;
-            if(currentPlatform == null)
+            GameObject player = PlayerController.player;
+            if (currentPlatform == null || player == null)
             {
                 return;
-            }
+            }            
+
+            this.transform.position += player.transform.forward * speed;
 
             if (currentPlatform.tag == "StairUp")
             {

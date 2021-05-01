@@ -1,4 +1,5 @@
 ﻿using EZCameraShake;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace Bavans.Runner.World.Obstacle
     public class DestroyWall : MonoBehaviour
     {
         public GameObject[] brickList;
+        public Material destoyMaterial;
         List<Rigidbody> bricksRBList = new List<Rigidbody>();
         List<Vector3> bricksPostionList = new List<Vector3>();
         List<Quaternion> bricksRotationList = new List<Quaternion>();
@@ -29,7 +31,7 @@ namespace Bavans.Runner.World.Obstacle
             if(collision.gameObject.tag == "Spell")
             {
                
-                blast.SetActive(true);
+                blast.SetActive(true);                
                 col.enabled = false;
                 
                 foreach (Rigidbody rb in bricksRBList)
@@ -44,7 +46,10 @@ namespace Bavans.Runner.World.Obstacle
         void KillMagic()
         {
             blast.SetActive(false);
+            
         }
+
+       
 
         private void OnEnable()
         {

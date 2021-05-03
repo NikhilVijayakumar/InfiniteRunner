@@ -616,8 +616,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f721a705a5c569488d75d3fe77e3143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magic: {fileID: 0}
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  magicData: []
   magicStartPostion: {fileID: 0}
+  pannel: {fileID: 0}
+  istutorial: 0
 --- !u!1 &7351607126399584188
 GameObject:
   m_ObjectHideFlags: 0

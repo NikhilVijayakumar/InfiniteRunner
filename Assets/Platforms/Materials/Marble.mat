@@ -22,8 +22,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Marble
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_ShaderKeywords: _DETAIL_MAP _DISPLACEMENT_LOCK_TILING_SCALE _EMISSIVE_COLOR_MAP
-    _HEIGHTMAP _MASKMAP _NORMALMAP _NORMALMAP_TANGENT_SPACE _PIXEL_DISPLACEMENT _PIXEL_DISPLACEMENT_LOCK_OBJECT_SCALE
+  m_ShaderKeywords: _BENTNORMALMAP _DETAIL_MAP _DISPLACEMENT_LOCK_TILING_SCALE _EMISSIVE_COLOR_MAP
+    _HEIGHTMAP _MASKMAP _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP _NORMALMAP_TANGENT_SPACE
+    _PIXEL_DISPLACEMENT _PIXEL_DISPLACEMENT_LOCK_OBJECT_SCALE
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -47,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 68cdf9d622dd99445a71ad9dbcf4f55f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMapOS:
@@ -59,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CoatMaskMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c00e09eeb18d01e4fa5df383e1e7c2dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -87,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
-        m_Texture: {fileID: 2800000, guid: 9ce683901aa7aad43ae79f8f0a9e7be3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4335142a2a55c0e4894396efc438f22a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -155,8 +156,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AORemapMax: 0.77619183
-    - _AORemapMin: 0.42023045
+    - _AORemapMax: 0.33736712
+    - _AORemapMin: 0.15991063
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -170,15 +171,15 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _BumpScale: 1
-    - _CoatMask: 0
+    - _CoatMask: 0.519
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
-    - _DetailAlbedoScale: 1
+    - _DetailAlbedoScale: 0.676
     - _DetailNormalMapScale: 1
-    - _DetailNormalScale: 1
-    - _DetailSmoothnessScale: 1
+    - _DetailNormalScale: 0.231
+    - _DetailSmoothnessScale: 0.833
     - _DiffusionProfile: 0
     - _DiffusionProfileHash: 0
     - _DisplacementLockObjectScale: 1
@@ -227,10 +228,10 @@ Material:
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 0
     - _MaterialID: 1
-    - _Metallic: 0.686
+    - _Metallic: 0.336
     - _Mode: 0
     - _NormalMapSpace: 0
-    - _NormalScale: 1
+    - _NormalScale: 3.24
     - _OcclusionStrength: 0.38
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
@@ -242,8 +243,8 @@ Material:
     - _RefractionModel: 0
     - _SSRefractionProjectionModel: 0
     - _Smoothness: 0.5
-    - _SmoothnessRemapMax: 0.49666154
-    - _SmoothnessRemapMin: 0.33469683
+    - _SmoothnessRemapMax: 0.16196471
+    - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2

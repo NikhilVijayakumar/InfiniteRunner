@@ -30,8 +30,11 @@ namespace Bavans.Runner.World.Obstacle
         {
             if(collision.gameObject.tag == "Spell")
             {
-               
-                blast.SetActive(true);                
+                if (blast != null)
+                {
+                    blast.SetActive(true);
+                }
+                           
                 col.enabled = false;
                 
                 foreach (Rigidbody rb in bricksRBList)
@@ -45,7 +48,11 @@ namespace Bavans.Runner.World.Obstacle
 
         void KillMagic()
         {
-            blast.SetActive(false);
+            if (blast != null)
+            {
+                blast.SetActive(false);
+            }
+           
             
         }
 

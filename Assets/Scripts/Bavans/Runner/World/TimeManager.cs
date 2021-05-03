@@ -14,8 +14,8 @@ namespace Bavans.Runner.World
         void Awake()
         {
             singleton = this;
-            DisableSky();
-            ClearSky();
+           // DisableSky();
+           // ClearSky();
             SetSkybox();
         }
 
@@ -54,7 +54,7 @@ namespace Bavans.Runner.World
         public void ClearSky()
         {
             timeIndex = -1;
-            SetSky();
+            //SetSky();
         }
 
         public void updateScore(int coin)
@@ -62,7 +62,7 @@ namespace Bavans.Runner.World
             score += coin;
             if (score >= 25)
             {
-                SetSky();
+               // SetSky();
                 score = 0;
             }
 

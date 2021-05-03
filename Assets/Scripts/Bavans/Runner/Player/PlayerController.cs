@@ -13,20 +13,20 @@ namespace Bavans.Runner.Player
         public static GameObject player;
         public static GameObject currentPlatform;
         public static bool isDead = false;
-        bool canTurn = false;
-        bool isJumping = false;
-        Vector3 startPostion;
-        Animator animator;
-        Rigidbody rb;
+        protected bool canTurn = false;
+        protected bool isJumping = false;
+        protected Vector3 startPostion;
+        protected Animator animator;
+        protected Rigidbody rb;
         public TextMeshProUGUI scoreText;
         public TextMeshProUGUI highScoreText;
 
         //magic
         public GameObject[] magicData;
-        GameObject magic;
+        protected GameObject magic;
         public Transform magicStartPostion;
-        Rigidbody mRb;
-        int score = 0;
+        protected Rigidbody mRb;
+        protected int score = 0;
         public GameObject pannel;
         public bool istutorial = false;
 
@@ -42,7 +42,7 @@ namespace Bavans.Runner.Player
                   
          }
 
-        private void initGame()
+        protected void initGame()
         {
             rb = GetComponent<Rigidbody>();
 
@@ -71,8 +71,8 @@ namespace Bavans.Runner.Player
                 }
 
             }
-            TimeManager.singleton.ClearSky();
-            updateScore(score);
+          //  TimeManager.singleton.ClearSky();
+           // updateScore(score);
         }
 
         // Update is called once per frame

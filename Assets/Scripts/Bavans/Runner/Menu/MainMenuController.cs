@@ -62,6 +62,7 @@ namespace Bavans.Runner.Menu
 
         public void LoadTutorialScene()
         {
+            PlayerController.isDead = false;
             SceneManager.LoadScene("LearnToPLay", LoadSceneMode.Single);
         }
 

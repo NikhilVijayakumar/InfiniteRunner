@@ -32,11 +32,13 @@ namespace Bavans.Runner.World
 
         public void QuitGame()
         {
+            PlayerController.isDead = false;
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
 
         public void GoToTutorial()
         {
+            PlayerController.isDead = false;
             SceneManager.LoadScene("LearnToPLay", LoadSceneMode.Single);
         }
 
